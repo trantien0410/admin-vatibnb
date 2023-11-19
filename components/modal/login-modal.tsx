@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 
 import Modal from "./modal";
 import Input from "@/components/inputs/input";
-import Heading from "@/components/heading";
 import { useLoginModal } from "@/hooks/useLoginModal";
+import { Heading } from "../ui/heading";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -51,7 +51,7 @@ const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Administration" subtitle="Login to Admin-VatiBnb!" />
+      <Heading title="Administration" description="Login to Admin-VatiBnb!" />
       <Input
         id="email"
         label="Email"
