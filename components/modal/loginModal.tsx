@@ -14,6 +14,7 @@ import { useLoginModal } from "@/hooks/useLoginModal";
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -32,7 +33,7 @@ const LoginModal = () => {
 
     signIn("credentials", {
       ...data,
-      redirect: false,
+      redirect: true,
     }).then((callback) => {
       setIsLoading(false);
 

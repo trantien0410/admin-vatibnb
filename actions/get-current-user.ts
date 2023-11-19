@@ -1,5 +1,6 @@
 import prismadb from "@/lib/prismadb";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { Role } from "@prisma/client";
 import { getServerSession } from "next-auth/next";
 
 export async function getSession() {
@@ -20,7 +21,7 @@ export default async function getCurrentUser() {
       },
     });
 
-    if (!currentUser) {
+    if (!currentUser || currentUser.role !== Role.ADMIN) {
       return null;
     }
 
