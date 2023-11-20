@@ -22,6 +22,11 @@ export function MainNav({
       label: "Users",
       active: pathname === `/${params?.adminId}/users`,
     },
+    {
+      href: `/${params?.adminId}/listings`,
+      label: "Listings",
+      active: pathname === `/${params?.adminId}/listings`,
+    },
   ];
   return (
     <nav

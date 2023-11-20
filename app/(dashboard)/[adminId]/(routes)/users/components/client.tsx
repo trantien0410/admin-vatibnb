@@ -15,7 +15,7 @@ export const UserClient: React.FC<UserClientProps> = ({ data }) => {
       <div className="flex items-center justify-between">
         <Heading
           title={`Users (${data.length})`}
-          description="Manage billboards for your store"
+          description="Manage users for your website"
         />
       </div>
       <Separator />

@@ -7,7 +7,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { UserColumn } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Copy, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
@@ -15,9 +14,10 @@ import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modal/alert-modal";
 import axios from "axios";
+import { ListingsColumn } from "./columns";
 
 interface CellActionProps {
-  data: UserColumn;
+  data: ListingsColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -28,18 +28,18 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const [open, setOpen] = useState(false);
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("User Id copied to the clipboard.");
+    toast.success("Listing Id copied to the clipboard.");
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params?.adminId}/users/${data.id}`);
+      await axios.delete(`/api/${params?.adminId}/listings/${data.id}`);
       router.refresh();
       // router.push(`/${params?.adminId}/users`);
-      toast.success("User deleted.");
+      toast.success("Listing deleted.");
     } catch (error: any) {
-      toast.error("Delete user failed.");
+      toast.error("Delete listing failed.");
     } finally {
       setLoading(false);
       setOpen(false);
