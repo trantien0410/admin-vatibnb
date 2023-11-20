@@ -2,19 +2,21 @@
 
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { ListingsColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
+import { ReservationsColumn, columns } from "./columns";
 
-interface ListingClientProps {
-  data: ListingsColumn[];
+interface ReservationClientProps {
+  data: ReservationsColumn[];
 }
 
-export const ListingClient: React.FC<ListingClientProps> = ({ data }) => {
+export const ReservationClient: React.FC<ReservationClientProps> = ({
+  data,
+}) => {
   return (
     <>
       <Heading
-        title={`Listings (${data.length})`}
-        description="Manage listings for your website"
+        title={`Reservations (${data.length})`}
+        description="Manage reservations of your website"
       />
       <Separator />
       <DataTable columns={columns} data={data} searchKey="title" />

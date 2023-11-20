@@ -27,6 +27,11 @@ export function MainNav({
       label: "Listings",
       active: pathname === `/${params?.adminId}/listings`,
     },
+    {
+      href: `/${params?.adminId}/reservations`,
+      label: "Reservations",
+      active: pathname === `/${params?.adminId}/reservations`,
+    },
   ];
   return (
     <nav

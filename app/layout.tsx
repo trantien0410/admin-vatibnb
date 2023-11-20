@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToastProvider />
-        <LoginProvider />
-        {children}
+          <ToastProvider />
+          <LoginProvider />
+          {children}
       </body>
     </html>
   );

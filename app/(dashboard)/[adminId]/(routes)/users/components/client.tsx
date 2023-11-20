@@ -12,14 +12,12 @@ interface UserClientProps {
 export const UserClient: React.FC<UserClientProps> = ({ data }) => {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <Heading
-          title={`Users (${data.length})`}
-          description="Manage users for your website"
-        />
-      </div>
+      <Heading
+        title={`Users (${data.length})`}
+        description="Manage users for your website"
+      />
       <Separator />
-      <DataTable columns={columns} data={data} searchKey="email"/>
+      <DataTable columns={columns} data={data} searchKey="email" />
     </>
   );
 };

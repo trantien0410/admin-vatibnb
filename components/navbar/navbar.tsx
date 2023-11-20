@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = async ({ currentUser }) => {
     <div className="border-b">
       <div className="flex h-16 items-center px-4">
         <Logo />
-        <MainNav className="mx-6" />
+        <MainNav className="mx-10" />
         <div className="ml-auto flex items-center space-x-4">
           <UserMenu currentUser={currentUser} />
         </div>
