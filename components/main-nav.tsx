@@ -13,6 +13,11 @@ export function MainNav({
 
   const routes = [
     {
+      href: `/${params?.adminId}`,
+      label: "Home",
+      active: pathname === `/${params?.adminId}`,
+    },
+    {
       href: `/${params?.adminId}/users`,
       label: "Users",
       active: pathname === `/${params?.adminId}/users`,

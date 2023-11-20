@@ -1,6 +1,6 @@
 "use client";
 
-import { useLoginModal } from "@/hooks/useLoginModal";
+import { useLoginModal } from "@/hooks/use-login-modal";
 import { useEffect } from "react";
 
 const SetupPage = () => {

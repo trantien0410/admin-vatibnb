@@ -1,28 +1,32 @@
+import { format } from "date-fns";
+
 import prismadb from "@/lib/prismadb";
-import { redirect } from "next/navigation";
-import { UserForm } from "./components/setting-form";
+import { UserClient } from "./components/client";
+import { Role } from "@prisma/client";
+import { UserColumn } from "./components/columns";
 
-interface UsersProps {
-  params: {
-    adminId: string;
-  };
-}
-
-const UsersPage: React.FC<UsersProps> = async ({ params }) => {
-  const admin = await prismadb.user.findFirst({
+const UsersPage = async () => {
+  const users = await prismadb.user.findMany({
     where: {
-      id: params.adminId,
+      role: Role.USER,
+    },
+    orderBy: {
+      createdAt: "desc",
     },
   });
 
-  if (!admin) {
-    redirect("/");
-  }
+  const formattedUsers: UserColumn[] = users.map((item) => ({
+    id: item.id,
+    name: item.name || "",
+    email: item.email || "",
+    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+  }));
+
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <UserForm />
-        </div>
+        <UserClient data={formattedUsers} />
+      </div>
     </div>
   );
 };

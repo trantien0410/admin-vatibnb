@@ -7,8 +7,8 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 import Modal from "./modal";
-import Input from "@/components/inputs/input";
-import { useLoginModal } from "@/hooks/useLoginModal";
+import Input from "@/components/input-style";
+import { useLoginModal } from "@/hooks/use-login-modal";
 import { Heading } from "../ui/heading";
 
 const LoginModal = () => {
