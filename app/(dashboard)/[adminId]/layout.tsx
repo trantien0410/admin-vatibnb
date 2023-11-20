@@ -1,7 +1,6 @@
 import getCurrentUser from "@/actions/get-current-user";
 import Navbar from "@/components/navbar/navbar";
 import prismadb from "@/lib/prismadb";
-import { Role } from "@prisma/client";
 import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
