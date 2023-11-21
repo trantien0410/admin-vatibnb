@@ -1,6 +1,5 @@
 "use client";
 
-import { AiOutlineMenu } from "react-icons/ai";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { signOut } from "next-auth/react";
@@ -54,11 +53,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                         cursor-pointer
                         hover:drop-shadow
                         bg-white
+                        dark:bg-zinc-900
                         ${isOpen ? "drop-shadow" : ""}
                         transition
                     `}
         >
-          <AiOutlineMenu className="md:ml-2" />
           <div className="hidden md:block">
             <Avatar src={currentUser?.image} />
           </div>
@@ -77,6 +76,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             w-[40vw]
             md:w-[28vw]
             bg-white
+            dark:bg-zinc-900
             overflow-hidden
             right-0
             text-sm

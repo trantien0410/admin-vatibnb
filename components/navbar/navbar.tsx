@@ -4,6 +4,7 @@ import UserMenu from "./user-menu";
 import getCurrentUser from "@/actions/get-current-user";
 import { redirect } from "next/navigation";
 import { MainNav } from "@/components/main-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -21,6 +22,7 @@ const Navbar: React.FC<NavbarProps> = async ({ currentUser }) => {
         <Logo />
         <MainNav className="mx-10" />
         <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
           <UserMenu currentUser={currentUser} />
         </div>
       </div>
