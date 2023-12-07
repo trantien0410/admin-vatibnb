@@ -32,6 +32,11 @@ export function MainNav({
       label: "Reservations",
       active: pathname === `/${params?.adminId}/reservations`,
     },
+    {
+      href: `/${params?.adminId}/vehicles`,
+      label: "Vehicles",
+      active: pathname === `/${params?.adminId}/vehicles`,
+    },
   ];
   return (
     <nav
@@ -43,9 +48,9 @@ export function MainNav({
           key={route.href}
           href={route.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
+            "text-sm font-medium transition-colors hover:text-rose-500",
             route.active
-              ? "text-black dark:text-white"
+              ? "text-rose-500 dark:text-rose-500"
               : "text-muted-foreground"
           )}
         >
