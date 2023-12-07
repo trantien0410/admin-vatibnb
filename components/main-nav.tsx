@@ -37,6 +37,11 @@ export function MainNav({
       label: "Vehicles",
       active: pathname === `/${params?.adminId}/vehicles`,
     },
+    {
+      href: `/${params?.adminId}/vehicleReservations`,
+      label: "Vehicle Reservations",
+      active: pathname === `/${params?.adminId}/vehicleReservations`,
+    },
   ];
   return (
     <nav
