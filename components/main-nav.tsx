@@ -10,6 +10,7 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
   const params = useParams();
+  const isVehiclePage = pathname?.startsWith(`/${params?.adminId}/transports`);
 
   const routes = [
     {
@@ -32,15 +33,27 @@ export function MainNav({
       label: "Reservations",
       active: pathname === `/${params?.adminId}/reservations`,
     },
+  ];
+  const routesForVehicles = [
     {
-      href: `/${params?.adminId}/vehicles`,
-      label: "Vehicles",
-      active: pathname === `/${params?.adminId}/vehicles`,
+      href: `/${params?.adminId}/transports`,
+      label: "Home",
+      active: pathname === `/${params?.adminId}/transports`,
     },
     {
-      href: `/${params?.adminId}/vehicleReservations`,
+      href: `/${params?.adminId}/transports/users`,
+      label: "Users",
+      active: pathname === `/${params?.adminId}/transports/users`,
+    },
+    {
+      href: `/${params?.adminId}/transports/vehicles`,
+      label: "Vehicles",
+      active: pathname === `/${params?.adminId}/transports/vehicles`,
+    },
+    {
+      href: `/${params?.adminId}/transports/vehicleReservations`,
       label: "Vehicle Reservations",
-      active: pathname === `/${params?.adminId}/vehicleReservations`,
+      active: pathname === `/${params?.adminId}/transports/vehicleReservations`,
     },
   ];
   return (
@@ -48,20 +61,35 @@ export function MainNav({
       className={cn("flex item-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            "text-sm font-medium transition-colors hover:text-rose-500",
-            route.active
-              ? "text-rose-500 dark:text-rose-500"
-              : "text-muted-foreground"
-          )}
-        >
-          {route.label}
-        </Link>
-      ))}
+      {isVehiclePage
+        ? routesForVehicles.map((route) => (
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-rose-500",
+                route.active
+                  ? "text-rose-500 dark:text-rose-500"
+                  : "text-muted-foreground"
+              )}
+            >
+              {route.label}
+            </Link>
+          ))
+        : routes.map((route) => (
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-rose-500",
+                route.active
+                  ? "text-rose-500 dark:text-rose-500"
+                  : "text-muted-foreground"
+              )}
+            >
+              {route.label}
+            </Link>
+          ))}
     </nav>
   );
 }
