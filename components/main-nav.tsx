@@ -11,6 +11,9 @@ export function MainNav({
   const pathname = usePathname();
   const params = useParams();
   const isVehiclePage = pathname?.startsWith(`/${params?.adminId}/transports`);
+  const isRestaurantPage = pathname?.startsWith(
+    `/${params?.adminId}/restaurants`
+  );
 
   const routes = [
     {
@@ -56,6 +59,29 @@ export function MainNav({
       active: pathname === `/${params?.adminId}/transports/vehicleReservations`,
     },
   ];
+  const routesForRestaurants = [
+    {
+      href: `/${params?.adminId}/restaurants`,
+      label: "Home",
+      active: pathname === `/${params?.adminId}/restaurants`,
+    },
+    {
+      href: `/${params?.adminId}/restaurants/users`,
+      label: "Users",
+      active: pathname === `/${params?.adminId}/restaurants/users`,
+    },
+    {
+      href: `/${params?.adminId}/restaurants/restaurantListings`,
+      label: "Restaurants",
+      active: pathname === `/${params?.adminId}/restaurants/restaurantListings`,
+    },
+    {
+      href: `/${params?.adminId}/restaurants/restaurantReservations`,
+      label: "Restaurant Reservations",
+      active:
+        pathname === `/${params?.adminId}/restaurants/restaurantReservations`,
+    },
+  ];
   return (
     <nav
       className={cn("flex item-center space-x-4 lg:space-x-6", className)}
@@ -63,6 +89,21 @@ export function MainNav({
     >
       {isVehiclePage
         ? routesForVehicles.map((route) => (
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-rose-500",
+                route.active
+                  ? "text-rose-500 dark:text-rose-500"
+                  : "text-muted-foreground"
+              )}
+            >
+              {route.label}
+            </Link>
+          ))
+        : isRestaurantPage
+        ? routesForRestaurants.map((route) => (
             <Link
               key={route.href}
               href={route.href}

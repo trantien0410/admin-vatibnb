@@ -34,6 +34,10 @@ const stores = [
     value: "transports",
     label: "Transports",
   },
+  {
+    value: "restaurants",
+    label: "Restaurants",
+  },
 ];
 
 export default function StoreSwitcher({ className }: StoreSwitcherProps) {
@@ -41,18 +45,27 @@ export default function StoreSwitcher({ className }: StoreSwitcherProps) {
   const params = useParams();
   const pathname = usePathname();
   const isVehiclePage = pathname?.startsWith(`/${params?.adminId}/transports`);
+  const isRestaurantPage = pathname?.startsWith(
+    `/${params?.adminId}/restaurants`
+  );
   const [open, setOpen] = useState(false);
 
   const currentStore = stores.find(
-    (item) => item.value === (isVehiclePage ? "transports" : "hotels")
+    (item) =>
+      item.value ===
+      (isVehiclePage
+        ? "transports"
+        : isRestaurantPage
+        ? "restaurants"
+        : "hotels")
   );
 
   const onStoreSelect = (store: { value: string; label: string }) => {
     setOpen(false);
-    if (!isVehiclePage) {
-      router.push(`/${params?.adminId}/${store.value}`);
-    } else {
+    if (store.value === "hotels") {
       router.push(`/${params?.adminId}`);
+    } else {
+      router.push(`/${params?.adminId}/${store.value}`);
     }
   };
 
