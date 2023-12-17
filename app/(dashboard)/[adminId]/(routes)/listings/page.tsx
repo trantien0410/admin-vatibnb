@@ -18,6 +18,7 @@ const ListingsPage = async () => {
     id: item.id,
     title: item.title,
     description: item.description,
+    phoneContact: item.phoneContact,
     roomCount: item.roomCount,
     bathroomCount: item.bathroomCount,
     guestCount: item.guestCount,

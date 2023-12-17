@@ -7,6 +7,7 @@ export type ListingsColumn = {
   id: string;
   title: string;
   description: string;
+  phoneContact: string;
   roomCount: number;
   bathroomCount: number;
   guestCount: number;
@@ -36,6 +37,10 @@ export const columns: ColumnDef<ListingsColumn>[] = [
   {
     accessorKey: "location",
     header: "Location",
+  },
+  {
+    accessorKey: "phoneContact",
+    header: "Contact",
   },
   {
     accessorKey: "roomCount",

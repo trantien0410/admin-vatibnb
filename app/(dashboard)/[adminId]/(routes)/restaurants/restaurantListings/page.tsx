@@ -18,6 +18,7 @@ const RestaurantPage = async () => {
     id: item.id,
     title: item.title,
     description: item.description,
+    phoneContact: item.phoneContact,
     guestCount: item.guestCount,
     price: item.price,
     location: [item.detailedAddress, item.countryValue],

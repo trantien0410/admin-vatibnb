@@ -18,6 +18,7 @@ const VehiclesPage = async () => {
     id: item.id,
     title: item.title,
     description: item.description,
+    phoneContact: item.phoneContact,
     seatCount: item.seatCount,
     price: item.price,
     location: [item.detailedAddress, item.countryValue],

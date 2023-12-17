@@ -7,6 +7,7 @@ export type VehiclesColumn = {
   id: string;
   title: string;
   description: string;
+  phoneContact: string;
   seatCount: number;
   price: number;
   location: string[];
@@ -30,6 +31,10 @@ export const columns: ColumnDef<VehiclesColumn>[] = [
   {
     accessorKey: "description",
     header: "Description",
+  },
+  {
+    accessorKey: "phoneContact",
+    header: "Contact",
   },
   {
     accessorKey: "location",
