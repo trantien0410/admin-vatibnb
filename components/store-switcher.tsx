@@ -8,7 +8,13 @@ import {
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, ChevronsUpDown, Store as StoreIcon } from "lucide-react";
+import {
+  CarFrontIcon,
+  Check,
+  ChevronsUpDown,
+  Store as StoreIcon,
+  UtensilsCrossedIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Command,
@@ -80,7 +86,13 @@ export default function StoreSwitcher({ className }: StoreSwitcherProps) {
           aria-label="Select a store"
           className={cn("w-[200px] justify-between", className)}
         >
-          <StoreIcon className="mr-2 h-4 w-4" />
+          {currentStore?.value === "transports" ? (
+            <CarFrontIcon className="mr-2 h-4 w-4" />
+          ) : currentStore?.value === "restaurants" ? (
+            <UtensilsCrossedIcon className="mr-2 h-4 w-4" />
+          ) : (
+            <StoreIcon className="mr-2 h-4 w-4" />
+          )}
           {currentStore?.label}
           <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -97,7 +109,13 @@ export default function StoreSwitcher({ className }: StoreSwitcherProps) {
                   onSelect={() => onStoreSelect(store)}
                   className="text-sm"
                 >
-                  <StoreIcon className="mr-2 h-4 w-4" />
+                  {store.value === "transports" ? (
+                    <CarFrontIcon className="mr-2 h-4 w-4" />
+                  ) : store.value === "restaurants" ? (
+                    <UtensilsCrossedIcon className="mr-2 h-4 w-4" />
+                  ) : (
+                    <StoreIcon className="mr-2 h-4 w-4" />
+                  )}
                   {store.label}
                   <Check
                     className={cn(
