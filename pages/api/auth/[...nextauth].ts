@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
         });
 
         if (!user || !user?.hashedPassword || user.role !== Role.ADMIN) {
-          throw new Error("Invalid credentials");
+          throw new Error("Not authorized");
         }
 
         const isCorrectPassword = await bcrypt.compare(

@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FiEyeOff, FiEye } from "react-icons/fi";
 
 interface InputProps {
   id: string;
@@ -8,8 +10,9 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   required?: boolean;
+  multiline?: boolean;
   register: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  errors: { [x: string]: any }; // Adjust based on your error object structure
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,16 +22,30 @@ const Input: React.FC<InputProps> = ({
   disabled,
   register,
   required,
+  multiline,
   errors,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => setShowPassword(!showPassword);
+
   return (
     <div className="w-full relative">
+      {!multiline && type === "password" && (
+        <button
+          type="button"
+          onClick={toggleShowPassword}
+          className=" text-neutral-700 absolute right-3 top-1/2 transform -translate-y-1/2"
+        >
+          {showPassword ? <FiEyeOff size={22} /> : <FiEye size={22} />}
+        </button>
+      )}
       <input
         id={id}
         disabled={disabled}
         {...register(id, { required })}
         placeholder=" "
-        type={type}
+        type={showPassword && type === "password" ? "text" : type}
         className={`
           peer
           w-full
@@ -67,6 +84,10 @@ const Input: React.FC<InputProps> = ({
       >
         {label}
       </label>
+      {/* Error message display */}
+      {errors[id] && (
+        <p className="text-rose-500 text-sm mt-1">{errors[id].message}</p>
+      )}
     </div>
   );
 };
