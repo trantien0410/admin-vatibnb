@@ -32,7 +32,11 @@ NEXTAUTH_SECRET=
 
 ```
 
-- For Database url, we can get it from MongoDB
+- For Database url, we can get it from MongoDB. After getting it from MongoDB, then you need to turn on the terminal and run the following command:
+```shell
+npx prisma db push
+npx prisma generate
+```
 - For NextAuth Secret, key we can use like NEXTAUTH_SECRET
 
 ### Start the app
